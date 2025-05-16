@@ -1,4 +1,3 @@
-// .github/workflows/build-and-tag.yml
 name: Auto Build and Tag
 
 on:
