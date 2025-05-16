@@ -1,0 +1,35 @@
+// .github/workflows/build-and-tag.yml
+name: Auto Build and Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-tag:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+
+      - name: Build
+        run: |
+          echo "No build step. Add one if needed."
+
+      - name: Auto Increment Version
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "Current version: $CURRENT_VERSION"
+          npm version patch -m "Bump version to %s [skip ci]"
+          git push --follow-tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
