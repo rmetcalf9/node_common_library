@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write  # 👈 REQUIRED to allow git push and tag creation
+
+
 jobs:
   build-and-tag:
     runs-on: ubuntu-latest
