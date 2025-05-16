@@ -3,15 +3,13 @@
 A simple Node.js command line tool.
 
 ## Usage
-After installing:
 ```bash
-npx mycli
+npm install github:rmetcalf9/node_common_library
 ```
 
-Or if installed globally:
+After installing:
 ```bash
-npm install -g github:YOUR_USERNAME/my-cli-tool
-mycli
+npx cli
 ```
 
 ## Output
